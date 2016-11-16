@@ -1,0 +1,272 @@
+#include <cstdlib>	//Pause
+#include <iostream> //cin cout
+using namespace std;
+int matriz[24][22] = {/*0*/{1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0},/*1*/{1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,1},/*2*/{1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,1},/*3*/{0,0,0,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,1,0},/*4*/{0,0,0,0,1,1,0,0,1,0,1,0,0,0,0,1,0,0,0,0,0,0},/*5*/{1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0},/*6*/{0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0},/*7*/{0,0,1,0,0,1,1,0,0,1,0,0,1,1,0,0,1,0,0,0,0,1},/*8*/{0,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,0,1,0,0,1},/*9*/{0,1,0,0,1,1,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0},/*10*/{0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},/*11*/{0,0,0,0,1,1,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,1},/*12*/{0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0},/*13*/{0,0,0,0,1,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0},/*14*/{0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,0,1,0},/*15*/{0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1},/*16*/{1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0},/*17*/{0,0,1,0,1,0,0,0,1,0,0,1,1,1,0,0,0,1,0,0,0,1},/*18*/{0,0,1,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,0,0},/*19*/{0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0},/*20*/{0,1,0,0,0,1,0,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0},/*21*/{0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0},/*22*/{0,0,0,0,0,1,0,0,0,1,0,0,1,0,1,0,0,0,0,0,0,1},/*23*/{0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,1,0,1}};
+//24 personajes
+//22 Características
+int personajes[24]= {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},flagp;//Maquina
+int personajes1[24]= {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};//Usuario
+int caracteristicas[22] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},mayor,indicemayor,pregunta,flagc;
+int preguntasi[5] = {99,99,99,99,99},si=0,z;
+int random;
+int flag;
+int respuesta;
+int cpuper=0,turno;
+int x/*Personaje*/,y/*Caraceterísticas*/;
+int main()
+{
+	//Personaje m[aquina
+	cout<<"Escribe un numero"<<endl;
+	cin>>random;
+	system("CLS");
+	cpuper = random%24;
+	turno = cpuper%2; 
+	cout<<"Elige un personaje, no hagas trampa"<<endl;
+	tableros:
+	system("PAUSE");
+	system("CLS");
+	//Tablero máquina
+	cout<<endl<<"Tablero CPU"<<endl;
+	for(x=0;x<=23;x++){
+		cout<<personajes[x];
+		if(x+1==8||x+1==16||x+1==24)
+		cout<<endl;
+	}
+	cout<<endl<<"Tablero USER"<<endl;
+		for(x=0;x<=23;x++){
+		cout<<personajes1[x];
+		if(x+1==8||x+1==16||x+1==24)
+		cout<<endl;
+	}
+	if(turno==0){
+		//Usuario
+		cout<<"\nElige tu pregunta \n 0: \t Tu personaje tiene lentes? \n 1: \t Tu personaje tiene perdida de cabello? \n 2: \t Tu personaje tiene ojos azules? \n 3: \t Tu personaje tiene sombrero? \n 4: \t Tu personaje tiene boca grande? \n 5: \t Tu personaje tiene vello facial? \n 6: \t Tu personaje tiene cabello largo? \n 7: \t Tu personaje tiene ceja poblada? \n 8: \t Tu personaje tiene chapetes? \n 9: \t Tu personaje tiene bigote? \n 10: \t Tu personaje tiene barba? \n 11: \t Tu personaje tiene nariz grande? \n 12: \t Tu personaje tiene partido en el cabello? \n 13: \t Tu personaje tiene no sonrisa? \n 14: \t Tu personaje tiene cabello rubio? \n 15: \t Tu personaje tiene cabello negro? \n 16: \t Tu personaje tiene cabello pelirrojo? \n 17: \t Tu personaje tiene cabello casta;o? \n 18: \t Tu personaje tiene cabello blanco? \n 19: \t Tu personaje tiene las orejas tapadas? \n 20: \t Tu personaje tiene accesorios? \n 21: \t Tu personaje tiene cabello en la frente? \n 22: \t Adivinar personaje \n"<<endl;
+		cin>>respuesta; //Caracteristica
+		if(respuesta>=23){//Respuesta incorrecta
+			cout<<"Pregunta incorrecta\n";
+			goto tableros;
+		}
+		if(respuesta==22){//Respuesta final
+			cout<<endl<<"Menciona el numero del personaje"<<endl;
+			cin>>respuesta;
+			if(respuesta==cpuper+1)
+			cout<<endl<<"Eres un campeon, ganaste."<<endl;
+			if(respuesta=cpuper+1)
+			cout<<endl<<"Eres un perdedor."<<endl;
+			cout<<"Mi personaje era el "<<cpuper+1;
+			  return EXIT_SUCCESS;
+		}
+		int flag = matriz[cpuper][respuesta]; //Mi personaje lo tiene o no
+		if (flag==1)
+		cout<<"Si"<<endl;
+		if (flag==0)
+		cout<<"No"<<endl;
+		for(x=0;x<=23;x++){//Para todos los personajes
+			if(flag==1){ //Si la respuesta es SI
+				if(matriz[x][respuesta]!=1){ //Todos los que no tengan 
+				personajes1[x]=0;
+				}
+			}
+			if(flag==0){//No
+				if(matriz[x][respuesta]==1){//Los que si tengan
+				personajes1[x]=0;
+				}
+			}
+		}
+		//Maquina
+		for(y=0;y<=21;y++){
+			caracteristicas[y]=0; //Reiniciar el vector
+		}
+		mayor=0;
+		pregunta=0;
+		indicemayor=0;
+		for(y=0;y<=21;y++){//Caracter[isticas
+			for(x=0;x<=23;x++){//Personaje
+				if(personajes[x]==1){
+					if(matriz[x][y] ==1){
+						caracteristicas[y]++; //El valor de todas las caracteristicas
+					}
+					for(z=0;z<=4;z++){
+						caracteristicas[preguntasi[z]]=0;
+					}
+				}
+			}
+		}
+		for(y=0;y<=21;y++){//Caracter[isticas
+			if(caracteristicas[y]>=mayor){
+				mayor=caracteristicas[y]; //El valor mayor de las caracteristicas
+			}
+		}
+		for(y=0;y<=21;y++){//Saber cuantas preguntas de la misma magnitud hay
+			if(caracteristicas[y]==mayor){
+				pregunta++;//el n[umero de preguntas con m[as caracteristicas
+			}
+		}
+		flagc=(random%pregunta)+1;
+		pregunta=0;
+		indicemayor=0;
+		for(y=0;y<=21;y++){//Sacar una pregunta random
+			if(caracteristicas[y]==mayor){
+				pregunta++;
+			}
+			if(pregunta==flagc){
+				indicemayor=y;//Pregunta random
+				break;
+			}	
+		}
+		responder:
+		flagp=0;
+		for(x=0;x<=23;x++){
+			flagp = flagp+personajes[x];
+		}
+		if(flagp==1){
+			for(x=0;x<=23;x++){
+				if(personajes[x]==1){
+						cout<<endl<<"Tu personaje es el numero "<<x+1<<endl;
+						system("PAUSE");
+  						return EXIT_SUCCESS;
+				}
+			}
+		}
+		cout<<"Responde la pregunta numero "<<indicemayor<<"\n 0 es NO, 1 es SI"<<endl;
+		cin>>flag;
+		if(flag>=2){
+			cout<<endl<<"Respuesta incorrecta"<<endl;
+			goto responder;
+		}
+		if(flag==1){
+			preguntasi[si]=indicemayor;
+			si++;		
+		}
+		for(x=0;x<=23;x++){//Para todos los personajes
+			if(flag==1){ //Si la respuesta es SI
+				if(matriz[x][indicemayor]!=1){ //Todos los que no tengan 
+				personajes[x]=0;
+				}
+			}
+			if(flag==0){//No
+				if(matriz[x][indicemayor]==1){//Los que si tengan
+				personajes[x]=0;
+				}
+			}
+		}
+	}
+	if(turno==1){
+		//Maquina
+		for(y=0;y<=21;y++){
+			caracteristicas[y]=0; //Reiniciar el vector
+		}
+		mayor=0;
+		pregunta=0;
+		indicemayor=0;
+		for(y=0;y<=21;y++){//Caracter[isticas
+			for(x=0;x<=23;x++){//Personaje
+				if(personajes[x]==1){
+					if(matriz[x][y] ==1){
+						caracteristicas[y]++; //El valor de todas las caracteristicas
+					}
+					for(z=0;z<=4;z++){
+						caracteristicas[preguntasi[z]]=0;
+					}
+				}
+			}
+		}
+		for(y=0;y<=21;y++){//Caracter[isticas
+			if(caracteristicas[y]>=mayor){
+				mayor=caracteristicas[y]; //El valor mayor de las caracteristicas
+			}
+		}
+		for(y=0;y<=21;y++){//Saber cuantas preguntas de la misma magnitud hay
+			if(caracteristicas[y]==mayor){
+				pregunta++;//el n[umero de preguntas con m[as caracteristicas
+			}
+		}
+		flagc=(random%pregunta)+1;
+		pregunta=0;
+		indicemayor=0;
+		for(y=0;y<=21;y++){//Sacar una pregunta random
+			if(caracteristicas[y]==mayor){
+				pregunta++;
+			}
+			if(pregunta==flagc){
+				indicemayor=y;//Pregunta random
+				break;
+			}	
+		}
+		flagp=0;
+		for(x=0;x<=23;x++){
+			flagp = flagp+personajes[x];
+		}
+		if(flagp==1){
+			for(x=0;x<=23;x++){
+				if(personajes[x]==1){
+						cout<<endl<<"Tu personaje es el numero "<<x+1<<endl;
+						system("PAUSE");
+  						return EXIT_SUCCESS;
+				}
+			}
+		}
+		cout<<"\n 0: \t Tu personaje tiene lentes? \n 1: \t Tu personaje tiene perdida de cabello? \n 2: \t Tu personaje tiene ojos azules? \n 3: \t Tu personaje tiene sombrero? \n 4: \t Tu personaje tiene boca grande? \n 5: \t Tu personaje tiene vello facial? \n 6: \t Tu personaje tiene cabello largo? \n 7: \t Tu personaje tiene ceja poblada? \n 8: \t Tu personaje tiene chapetes? \n 9: \t Tu personaje tiene bigote? \n 10: \t Tu personaje tiene barba? \n 11: \t Tu personaje tiene nariz grande? \n 12: \t Tu personaje tiene partido en el cabello? \n 13: \t Tu personaje tiene no sonrisa? \n 14: \t Tu personaje tiene cabello rubio? \n 15: \t Tu personaje tiene cabello negro? \n 16: \t Tu personaje tiene cabello pelirrojo? \n 17: \t Tu personaje tiene cabello casta;o? \n 18: \t Tu personaje tiene cabello blanco? \n 19: \t Tu personaje tiene las orejas tapadas? \n 20: \t Tu personaje tiene accesorios? \n 21: \t Tu personaje tiene cabello en la frente? \n 22: \t Adivinar personaje \n"<<endl;
+		responder1:
+		cout<<"Responde la pregunta numero "<<indicemayor<<"\n 0 es NO, 1 es SI"<<endl;
+		cin>>flag;
+		if(flag>=2){
+			cout<<endl<<"Respuesta incorrecta"<<endl;
+			goto responder1;
+		}
+		if(flag==1){
+			preguntasi[si]=indicemayor;
+			si++;		
+		}
+		for(x=0;x<=23;x++){//Para todos los personajes
+			if(flag==1){ //Si la respuesta es SI
+				if(matriz[x][indicemayor]!=1){ //Todos los que no tengan 
+				personajes[x]=0;
+				}
+			}
+			if(flag==0){//No
+				if(matriz[x][indicemayor]==1){//Los que si tengan
+				personajes[x]=0;
+				}
+			}
+		}		
+		//Usuario
+		cout<<"\nElige tu pregunta"<<endl;
+		cin>>respuesta; //Caracteristica
+		if(respuesta>=23){//Respuesta incorrecta
+			cout<<"Pregunta incorrecta\n";
+			goto tableros;
+		}
+		if(respuesta==22){//Respuesta final
+			cout<<endl<<"Menciona el numero del personaje"<<endl;
+			cin>>respuesta;
+			if(respuesta==cpuper+1)
+			cout<<endl<<"Eres un campeon, ganaste."<<endl;
+			if(respuesta=cpuper+1){
+			cout<<endl<<"Eres un perdedor."<<endl;
+			}
+		cout<<"Mi personaje era el "<<cpuper+1;
+		return EXIT_SUCCESS;
+		}
+		int flag = matriz[cpuper][respuesta]; //Mi personaje lo tiene o no
+		if (flag==1)
+		cout<<"Si"<<endl;
+		if (flag==0)
+		cout<<"No"<<endl;
+		for(x=0;x<=23;x++){//Para todos los personajes
+			if(flag==1){ //Si la respuesta es SI
+				if(matriz[x][respuesta]!=1){ //Todos los que no tengan 
+				personajes1[x]=0;
+				}
+			}
+			if(flag==0){//No
+				if(matriz[x][respuesta]==1){//Los que si tengan
+				personajes1[x]=0;
+				}
+			}
+		}
+	}
+	goto tableros;
+	system("PAUSE");
+	return EXIT_SUCCESS;
+}
